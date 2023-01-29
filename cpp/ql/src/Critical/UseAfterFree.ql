@@ -4,6 +4,7 @@
  * @kind problem
  * @id cpp/use-after-free
  * @problem.severity warning
+ * @precision medium
  * @security-severity 9.3
  * @tags reliability
  *       security
@@ -17,7 +18,7 @@ import semmle.code.cpp.controlflow.StackVariableReachability
 predicate isFreeExpr(Expr e, StackVariable v) {
   exists(VariableAccess va | va.getTarget() = v |
     exists(FunctionCall fc | fc = e |
-      fc.getTarget().hasGlobalOrStdName("free") and
+      fc.getTarget().hasGlobalOrStdName(["free", "rt_free", "vs_free", "vs_pmem_free", "vs_ui_pmem_free", "vs_jsheap_pmem_free"]) and
       va = fc.getArgument(0)
     )
     or

@@ -18,6 +18,16 @@ private class MallocAllocationFunction extends AllocationFunction {
     this.hasGlobalOrStdOrBslName("malloc") and // malloc(size)
     sizeArg = 0
     or
+    this.hasGlobalOrStdOrBslName([
+        // rtt malloc
+        "rt_malloc", 
+        "vs_malloc", 
+        "vs_pmem_malloc", 
+        "vs_ui_pmem_malloc", 
+        "vs_jsheap_pmem_malloc"
+      ]) and
+    sizeArg = 0
+    or
     this.hasGlobalName([
         // --- Windows Memory Management for Windows Drivers
         "MmAllocateContiguousMemory", // MmAllocateContiguousMemory(size, maxaddress)

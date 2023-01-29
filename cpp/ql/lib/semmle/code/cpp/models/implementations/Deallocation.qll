@@ -19,6 +19,16 @@ private class StandardDeallocationFunction extends DeallocationFunction {
       ]) and
     freedArg = 0
     or
+    hasGlobalOrStdOrBslName([
+      // --- rtt allocation
+      "rt_free", "rt_realloc",
+      "vs_free",
+      "vs_pmem_free", "vs_pmem_realloc",
+      "vs_ui_pmem_free", "vs_ui_pmem_realloc",
+      "vs_jsheap_pmem_free", "vs_jsheap_pmem_realloc"
+    ]) and
+    freedArg = 0
+    or
     hasGlobalName([
         // --- OpenSSL memory allocation
         "CRYPTO_free", "CRYPTO_secure_free"

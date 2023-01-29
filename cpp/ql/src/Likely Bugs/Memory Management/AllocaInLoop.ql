@@ -9,6 +9,7 @@
  * @tags reliability
  *       correctness
  *       security
+ *       no_need
  *       external/cwe/cwe-770
  */
 

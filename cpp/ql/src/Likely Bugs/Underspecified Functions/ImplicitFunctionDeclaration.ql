@@ -9,6 +9,7 @@
  * @id cpp/implicit-function-declaration
  * @tags correctness
  *       maintainability
+ *       no_need
  */
 
 import cpp

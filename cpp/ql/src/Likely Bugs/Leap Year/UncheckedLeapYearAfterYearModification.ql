@@ -7,6 +7,7 @@
  * @precision medium
  * @tags leap-year
  *       correctness
+ *       no_need
  */
 
 import cpp

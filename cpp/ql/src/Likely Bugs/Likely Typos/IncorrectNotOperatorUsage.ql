@@ -10,6 +10,7 @@
  * @precision medium
  * @tags security
  *       external/cwe/cwe-480
+ *       no_need
  */
 
 import cpp

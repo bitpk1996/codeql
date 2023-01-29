@@ -9,6 +9,7 @@
  * @id cpp/mistyped-function-arguments
  * @tags correctness
  *       maintainability
+ *       no_need
  */
 
 import cpp

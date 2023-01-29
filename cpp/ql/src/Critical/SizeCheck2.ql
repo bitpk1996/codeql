@@ -9,6 +9,7 @@
  * @id cpp/suspicious-allocation-size
  * @tags reliability
  *       security
+ *       no_need
  *       external/cwe/cwe-131
  *       external/cwe/cwe-122
  */

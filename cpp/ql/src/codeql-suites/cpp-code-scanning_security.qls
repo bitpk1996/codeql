@@ -1,11 +1,5 @@
 - description: Standard Code Scanning queries for C and C++
-- queries: Best Practices/ 
-- queries: Critical/
-- queries: Header Cleanup/
-- queries: JPL_C/ 
-- queries: jsf/ 
-- queries: Likely Bugs/
-
+- queries: Security/CWE/
 - include:
     kind:
     - problem
@@ -13,13 +7,8 @@
     - alert
     - path-alert
     precision:
-    - medium
     - high
     - very-high
     problem.severity:
     - warning
     - error
-- exclude:
-    tags contain:
-    - no_need
-

@@ -12,6 +12,7 @@
  * @tags reliability
  *       readability
  *       language-features
+ *       no_need
  *       external/cwe/cwe-190
  */
 
