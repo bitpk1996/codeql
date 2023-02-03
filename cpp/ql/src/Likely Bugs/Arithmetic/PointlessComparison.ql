@@ -10,6 +10,7 @@
  * @id cpp/constant-comparison
  * @tags maintainability
  *       readability
+ *       no_need
  */
 
 import cpp

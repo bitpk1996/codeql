@@ -8,6 +8,7 @@
  * @id cpp/logical-operator-applied-to-flag
  * @tags reliability
  *       correctness
+ *       no_need
  *       external/cwe/cwe-480
  */
 
