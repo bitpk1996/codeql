@@ -13,6 +13,7 @@
  *       external/cwe/cwe-120
  *       external/cwe/cwe-787
  *       external/cwe/cwe-805
+ *       no_need
  */
 
 import semmle.code.cpp.security.BufferWrite

@@ -12,3 +12,6 @@
     problem.severity:
     - warning
     - error
+- exclude:
+    tags contain:
+    - no_need
