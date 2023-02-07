@@ -8,6 +8,7 @@
  * @precision medium
  * @id cpp/stack-address-escape
  * @tags reliability
+ *       no_need
  */
 
 import cpp
