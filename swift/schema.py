@@ -689,8 +689,13 @@ class PrefixUnaryExpr(ApplyExpr):
 class ProtocolMetatypeToObjectExpr(ImplicitConversionExpr):
     pass
 
+@ql.default_doc_name("regular expression")
 class RegexLiteralExpr(LiteralExpr):
-    pass
+    """A regular expression literal which is checked at compile time, for example `/a(a|b)*b/`."""
+    pattern: string
+    version: int | doc(
+        "version of the internal regular expression language being used by Swift")
+
 
 @ql.internal
 class SelfApplyExpr(ApplyExpr):
@@ -806,11 +811,47 @@ class CaseLabelItem(AstNode):
     pattern: Pattern | child
     guard: optional[Expr] | child
 
+class AvailabilitySpec(AstNode):
+    pass
+
+class PlatformVersionAvailabilitySpec(AvailabilitySpec):
+    """
+    An availability spec based on platform and version, for example `macOS 12` or `watchOS 14`
+    """
+    platform: string
+    version: string
+
+class OtherAvailabilitySpec(AvailabilitySpec):
+    """
+    A wildcard availability spec `*`
+    """
+    pass
+
+class AvailabilityInfo(AstNode):
+    """
+    An availability condition of an `if`, `while`, or `guard` statements.
+
+    Examples:
+    ```
+    if #available(iOS 12, *) {
+      // Runs on iOS 12 and above
+    } else {
+      // Runs only anything below iOS 12
+    }
+    if #unavailable(macOS 10.14, *) {
+      // Runs only on macOS 10 and below
+    }
+    ```
+    """
+    is_unavailable: predicate | doc("it is #unavailable as opposed to #available")
+    specs: list[AvailabilitySpec] | child
+
 @group("stmt")
 class ConditionElement(AstNode):
     boolean: optional[Expr] | child
     pattern: optional[Pattern] | child
     initializer: optional[Expr] | child
+    availability: optional[AvailabilityInfo] | child
 
 @group("stmt")
 class StmtCondition(AstNode):
