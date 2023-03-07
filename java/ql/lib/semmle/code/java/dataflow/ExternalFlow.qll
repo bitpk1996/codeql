@@ -67,9 +67,10 @@
  *    "taint" indicates a default additional taint step and "value" indicates a
  *    globally applicable value-preserving step.
  * 9. The `provenance` column is a tag to indicate the origin of the summary.
- *    There are two supported values: "generated" and "manual". "generated" means that
- *    the model has been emitted by the model generator tool and "manual" means
- *    that the model has been written by hand.
+ *    The supported values are: "manual", "generated" and "ai-generated". "manual"
+ *    means that the model has been written by hand, "generated" means that
+ *    the model has been emitted by the model generator tool and
+ *    "ai-generated" means that the model has been AI generated (ATM project).
  */
 
 import java
@@ -261,9 +262,9 @@ module ModelValidation {
         [
           "open-url", "jndi-injection", "ldap", "sql", "jdbc-url", "logging", "mvel", "xpath",
           "groovy", "xss", "ognl-injection", "intent-start", "pending-intent-sent",
-          "url-open-stream", "url-redirect", "create-file", "write-file", "set-hostname-verifier",
-          "header-splitting", "information-leak", "xslt", "jexl", "bean-validation", "ssti",
-          "fragment-injection"
+          "url-open-stream", "url-redirect", "create-file", "read-file", "write-file",
+          "set-hostname-verifier", "header-splitting", "information-leak", "xslt", "jexl",
+          "bean-validation", "ssti", "fragment-injection"
         ] and
       not kind.matches("regex-use%") and
       not kind.matches("qltest%") and
@@ -308,7 +309,7 @@ module ModelValidation {
       not ext.regexpMatch("|Annotated") and
       result = "Unrecognized extra API graph element \"" + ext + "\" in " + pred + " model."
       or
-      not provenance = ["manual", "generated"] and
+      not provenance = ["manual", "generated", "ai-generated"] and
       result = "Unrecognized provenance description \"" + provenance + "\" in " + pred + " model."
     )
   }
